@@ -26,7 +26,6 @@ public:
 int main() {
   Solution s = Solution();
   vector<int> v = {1,1,2,3,4};
-    // vector<int> v = {1,1,2,2,2,3,4};
   vector<int> v2 = {1,1,1,1,1};
   cout << s.removeDuplicates(v) << endl;
   cout << s.removeDuplicates(v2) << endl;
