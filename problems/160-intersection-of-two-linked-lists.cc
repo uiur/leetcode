@@ -1,6 +1,5 @@
-// Runtime: 932 ms, faster than 5.02% of C++ online submissions for Intersection of Two Linked Lists.
-// Memory Usage: 14.6 MB, less than 24.65% of C++ online submissions for Intersection of Two Linked Lists.
-
+// Runtime: 52 ms, faster than 36.42% of C++ online submissions for Intersection of Two Linked Lists.
+// Memory Usage: 17.3 MB, less than 11.04% of C++ online submissions for Intersection of Two Linked Lists.
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -12,13 +11,20 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        if (headA == nullptr) return nullptr;
-        if (headB == nullptr) return nullptr;
+        unordered_set<ListNode*> s;
+        
+        ListNode* a = headA;
+        while (a != nullptr) {
+            s.insert(a);
+            a = a->next;
+        }
+        
         ListNode* b = headB;
         while (b != nullptr) {
-            if (headA == b) return headA;
+            if (s.find(b) != s.end()) return b;
             b = b->next;
         }
-        return getIntersectionNode(headA->next, headB);
+        return nullptr;
+        
     }
 };
