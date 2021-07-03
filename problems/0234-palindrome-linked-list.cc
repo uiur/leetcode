@@ -20,8 +20,10 @@ public:
     }
     bool isPalindrome(ListNode* head) {
         if (head == nullptr || head->next == nullptr) return true;
-        ListNode* fast = head->next;
-        ListNode* slow = head;
+        ListNode* dummy = new ListNode();
+        dummy->next = head;
+        ListNode* fast = dummy;
+        ListNode* slow = dummy;
         while (fast != nullptr && fast->next != nullptr) {
             slow = slow->next;
             fast = fast->next->next;
