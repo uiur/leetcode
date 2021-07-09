@@ -15,8 +15,7 @@ public:
     /** Inserts a word into the trie. */
     void insert(string word) {
         Node* node = root;
-        for (int i = 0; i < word.size(); i++) {
-            char c = word[i];
+        for (char c : word) {
             if (node->children.find(c) == node->children.end()) {
                 Node* child = new Node();
                 node->children[c] = child;
@@ -29,8 +28,7 @@ public:
     /** Returns if the word is in the trie. */
     bool search(string word) {
         Node* node = root;
-        for (int i = 0; i < word.size(); i++) {
-            char c = word[i];
+        for (char c : word) {
             if (node->children.find(c) == node->children.end()) {
                 return false;
             }
@@ -42,8 +40,7 @@ public:
     /** Returns if there is any word in the trie that starts with the given prefix. */
     bool startsWith(string prefix) {
         Node* node = root;
-        for (int i = 0; i < prefix.size(); i++) {
-            char c = prefix[i];
+        for (char c : prefix) {
             if (node->children.find(c) == node->children.end()) {
                 return false;
             }
