@@ -1,20 +1,16 @@
 class Solution {
 public:
-    unordered_map<int, int> m;
     int numSquares(int n) {
-        if (n == 0) return 0;
-        if (m[n] > 0) return m[n];
-         
-        int s = 1;
-        
-        int result = n;
-        while (s * s <= n) {
-            int sub = numSquares(n - s * s);
-            result = min(result, sub + 1);
-            s++;
+        vector<int> dp(n+1);
+        dp[0] = 0;
+        for (int i = 1; i <= n; i++) {
+            int v = i;
+            for (int j = 1; j * j <= i; j++) {
+                v = min(v, dp[i - j * j] + 1);
+            }
+            dp[i] = v;
         }
         
-        m[n] = result;
-        return result;
+        return dp[n];
     }
 };
